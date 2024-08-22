@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"net/http"
 	"sync"
-
 	"github.com/gorilla/mux"
 )
 
