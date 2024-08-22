@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-
 	"github.com/gorilla/mux"
 )
 
@@ -23,7 +22,7 @@ func main() {
 		fmt.Fprintf(w, "%s %s is %d years old", user.Name, user.Email, user.Age)
 	})
 
-	r.HandleFunc("/add_user", func(w http.ResponseWriter, r *http.Request) {
+	r.HandleFunc("/add_user", func(w http.ResponseWriter, r *http.Request) { // Agregar usuarios
 		guy := User{
 			Name:  "john",
 			Email: "doe@doe.com",
