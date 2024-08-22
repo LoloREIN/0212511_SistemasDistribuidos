@@ -52,6 +52,8 @@ func main() {
 
 }
 /*
+INSTRUCCIONES:
+
 # Una vez aprendido hagan un pequeño proyecto
 
 1. Crear un modulo de go, será nuestro principal repositorio de trabajo
