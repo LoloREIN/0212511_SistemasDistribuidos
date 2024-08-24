@@ -29,3 +29,8 @@ Conceptos importantes:
     Offset uint64 ´json:"offset"´
   }
   ```
+- *Marshalear*
+- Es el concepto de convertir una estructura de datos a un JSON, XML u otro formato.
+
+- *Desmarshalear*
+ - Es el concepto que un JSON, XML u otro convertir a una estructura de datos del sistema.
