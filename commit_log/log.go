@@ -11,7 +11,7 @@ import (
 	"strings"
 	"sync"
 
-	api "github.com/LoloREIN/proglog/api/v1"
+	api "0212511_SD/api/v1"
 )
 
 type Log struct {

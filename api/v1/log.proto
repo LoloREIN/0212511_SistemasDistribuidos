@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package log.v1;
 
-option go_package = "github.com/LoloREIN/api/log_v1";
+option go_package = "github.com/LoloREIN/0212511_SistemasDistribuidos/api/log_v1";
 
 message Record {
   bytes value = 1;
