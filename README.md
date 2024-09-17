@@ -1,11 +1,7 @@
 # Proyecto de Materia Cpomputo distribuido
 
-
-
-
-
-## Steps
-### 1. Creando un servidor HTTP para procesar JSON
+## Practicas - LAB
+### 1. Creando un Servidor HTTP para procesar JSON
 
 Conceptos importantes:
 
@@ -34,3 +30,12 @@ Conceptos importantes:
 
 - *Desmarshalear*
  - Es el concepto que un JSON, XML u otro convertir a una estructura de datos del sistema.
+
+ *Servidor Simple* es un servidor que escribe y lea nuestro log
+  - Consta de dos Endpoints que tendran que procesar lo que necesitamos en tres pasos (Uno leer y uno para escribir)
+    - Primero desmarshalear/Unmarshalear el JSON a una estructura
+    - Logica como tal del endpoint para procesar el dato
+    - Marshalear/Marshael el resultado para dar una respuesta al request
+  - Usar/interactuar dos servicios con un net/rpc sencillo.
+
+### 2. Crear un Commit log para la transacciones del servidor
