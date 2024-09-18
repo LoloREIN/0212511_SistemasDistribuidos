@@ -1,14 +1,14 @@
 package server
 
-
 import (
 	"context"
 	"io/ioutil"
 	"net"
 	"testing"
 
-	api "0212511_SD/api/v1"	// Cambien esto por la ruta en su máquina
+	api "0212511_SD/api/v1"   // Cambien esto por la ruta en su máquina
 	"0212511_SD/internal/log" // Cambien esto por la ruta en su máquina
+
 	"github.com/stretchr/testify/require"
 	"google.golang.org/grpc"
 )
@@ -64,14 +64,16 @@ func setupTest(t *testing.T, fn func(*Config)) (
 	server, err := NewGRPCServer(config)
 	require.NoError(t, err)
 
+	s := grpc.NewServer()
+	api.RegisterLogServer(s,server)
 	go func() {
-		server.Serve(l)
+		s.Serve(l)
 	}()
 
 	client = api.NewLogClient(cc)
 
 	return client, config, func() {
-		server.Stop()
+		s.Stop()
 		cc.Close()
 		l.Close()
 		clog.Remove()
