@@ -5,8 +5,11 @@ compile:
                 --go_opt=paths=source_relative \
                 --go-grpc_opt=paths=source_relative \
                 --proto_path=.
+test_cover:
+	go test -coverprofile=coverage.out ./...
+
 test:
-	go test -race ./...
+	go test -v ./...
 
 coverage:
 	go tool cover -html=coverage.out
