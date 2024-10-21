@@ -15,8 +15,6 @@ var (
 	NobodyClientKeyFile  = configFile("nobody-client-key.pem")
 	ACLModelFile         = configFile("model.conf")
 	ACLPolicyFile        = configFile("policy.csv")
-	ClientCertFile       = configFile("client.pem")
-	ClientKeyFile        = configFile("client-key.pem")
 )
 
 func configFile(filename string) string {
@@ -27,7 +25,5 @@ func configFile(filename string) string {
 	if err != nil {
 		panic(err)
 	}
-
-	// modify this
-	return filepath.Join(homeDir, "0212511_SistemasDistribuidos", filename)
+	return filepath.Join(homeDir, ".proglog", filename)
 }
