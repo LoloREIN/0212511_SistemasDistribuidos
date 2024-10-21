@@ -1,6 +1,6 @@
 # Esto nos ayuda a posicionar nuestros config files en una carpeta dentro de nuestro proyecto
 
-CONFIG_PATH=${HOME}/Projects/SistemasDistribuidos/SistemasDistribuidos-Proyecto/.SistemasDistribuidos-Proyecto/
+CONFIG_PATH=${HOME}/Users/lorenzoreinoso/Library/CloudStorage/GoogleDrive-0212511@up.edu.mx/My Drive/Universidad/Semestre 7/computo_distribuido/0212511_SistemasDistribuidos
 
 .PHONY: init
 
@@ -14,20 +14,11 @@ init:
 # Finally we create the client certificate this allows two way authentication
 gencert:
 	cfssl gencert \
-		-initca test/ca-csr.json | cfssljson -bare ca
-	cfssl gencert \
-		-ca=ca.pem \
-		-ca-key=ca-key.pem \
-		-config=test/ca-config.json \
-		-profile=server \
-		test/server-csr.json | cfssljson -bare server
-	cfssl gencert \
-		-ca=ca.pem \
-		-ca-key=ca-key.pem \
-		-config=test/ca-config.json \
-		-profile=client \
-		test/client-csr.json | cfssljson -bare client
-	mv *.pem *.csr ${CONFIG_PATH}
+    -ca=ca.pem \
+    -ca-key=ca-key.pem \
+    -config=test/ca-config.json \
+    -profile=client \
+    test/client-csr.json | cfssljson -bare client
 
 compile:
 	protoc api/v1/*.proto \
