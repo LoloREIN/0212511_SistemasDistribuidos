@@ -19,7 +19,20 @@ type grpcServer struct {
 	*Config
 }
 
-func NewGRPCServer(config *Config) (srv *grpcServer, err error) {
+func NewGRPCServer(config *Config, opts ...grpc.ServerOption) (
+	*grpc.Server,
+	error,
+) {
+	gsrv := grpc.NewServer(opts...)
+	srv, err := newgrpcServer(config)
+	if err != nil {
+		return nil, err
+	}
+	api.RegisterLogServer(gsrv, srv)
+	return gsrv, nil
+}
+
+func newgrpcServer(config *Config) (srv *grpcServer, err error) {
 	srv = &grpcServer{
 		Config: config,
 	}
@@ -28,7 +41,7 @@ func NewGRPCServer(config *Config) (srv *grpcServer, err error) {
 
 func NewAPI(config *Config) (*grpc.Server, error) {
 	gsrv := grpc.NewServer()
-	srv, err := NewGRPCServer(config)
+	srv, err := newgrpcServer(config)
 	if err != nil {
 		return nil, err
 	}
