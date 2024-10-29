@@ -227,21 +227,17 @@ func testProduceConsumeStream(
 }
 
 func testUnauthorized(
-	t *testing.T,
-	_,
-	client api.LogClient,
-	config *Config,
+	t *testing.T, _, client api.LogClient, config *Config,
 ) {
 	ctx := context.Background()
-	produce, err := client.Produce(ctx,
-		&api.ProduceRequest{
-			Record: &api.Record{
-				Value: []byte("hello world"),
-			},
+	produce, err := client.Produce(ctx, &api.ProduceRequest{
+		Record: &api.Record{
+			Value: []byte("hello world"),
 		},
+	},
 	)
 	if produce != nil {
-		t.Fatalf("produce response should be nil")
+		t.Fatalf("Produce should be nil")
 	}
 	gotCode, wantCode := status.Code(err), codes.PermissionDenied
 	if gotCode != wantCode {
@@ -251,7 +247,7 @@ func testUnauthorized(
 		Offset: 0,
 	})
 	if consume != nil {
-		t.Fatalf("consume response should be nil")
+		t.Fatalf("Consume should be nil")
 	}
 	gotCode, wantCode = status.Code(err), codes.PermissionDenied
 	if gotCode != wantCode {
